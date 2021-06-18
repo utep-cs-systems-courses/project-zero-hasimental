@@ -13,6 +13,28 @@ void print_square(int leftCol, int size)
     putchar('\n');
   }
 }
+// helper method to print out the square sidways for the arrow
+void print_square_sideways(int leftCol, int size)
+{
+  int i, j;
+  int endCol = leftCol + size + 4;
+  for (int row = 4; row < size-3; row++){
+    int col;
+    for (col = 0; col < leftCol; col++) putchar(' ');
+    for (       ; col < endCol;  col++) putchar('*');
+    putchar('\n');
+  }
+
+  for (int row = 0; row <= size; row++) {
+    int minCol = leftCol + size - row, maxCol = leftCol + size + row;
+    int col;
+    for (col = endCol; col < minCol; col++) putchar(' ');
+    for (       ; col <= maxCol; col++) putchar('*');
+    putchar('\n');
+  }
+}
+
+
 
 // Prints a triangle of specified height whose left edge is at col leftCol.
 void print_triangle(int leftCol, int size)
@@ -26,3 +48,8 @@ void print_triangle(int leftCol, int size)
   }
 }
 
+void print_arrow(int leftCol, int size){
+   print_square_sideways(leftCol+4,size);
+  // print_triangle(leftCol,size);
+  // print_square(leftCol+4,size);
+}
